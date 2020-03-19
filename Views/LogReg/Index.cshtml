@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "Login Register";
+}
+
+<style>
+span{
+    color: red;
+  }
+.error{
+  color: red;
+}
+</style>
+
+@model BeltExam.Models.RegisterViewModel
+    
+@* <form action="Login" method="post">
+    <fieldset>
+        <legend>Login</legend>
+        <p>
+            <label for="LogEmail">Email</label>
+            <input type="text" name="LogEmail" id="LogEmail"/>
+        </p>
+        <p>
+            <label for="LogPassword">Password</label>
+            <input type="password" name="LogPassword" id="LogPassword"/>
+        </p>
+        <br>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </fieldset>
+</form> *@
+<form action="Login" method="post">
+  <div class="form-group">
+    <label for="LogEmail">Email address</label>
+    <input type="email" class="form-control" id="LogEmail" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="LogPassword">Password</label>
+    <input type="password" class="form-control" id="LogPassword" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
+
+<br>
+
+@if (ViewBag.message != null)
+{
+    <div class="error">
+        <h3><p>@ViewBag.message</p></h3>
+    </div>
+}
+
+<br>
+
+<form asp-controller="LogReg" asp-action="Register" method="post">
+    <fieldset>
+        <legend>Registration</legend>
+        <p>
+            <label asp-for="FirstName"></label>
+            <input asp-for="FirstName">
+            <span asp-validation-for="FirstName"></span>
+        </p>
+        <p>
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName">
+            <span asp-validation-for="LastName"></span>
+        </p>
+        <p>
+            <label asp-for="Email"></label>
+            <input asp-for="Email">
+            <span asp-validation-for="Email"></span>
+        </p>
+        <p>
+            <label asp-for="Password"></label>
+            <input asp-for="Password">
+            <span asp-validation-for="Password"></span>
+        </p>
+        <p>
+            <label asp-for="Confirm"></label>
+            <input asp-for="Confirm">
+            <span asp-validation-for="Confirm"></span>
+        </p>
+        
+        <button type="submit" class="btn btn-primary">Register</button>
+    </fieldset>
+</form>

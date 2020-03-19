@@ -1,0 +1,30 @@
+<h1>Create an Activity!</h1>
+<h3><a asp-controller="Activity" asp-action="Home">Home</a>
+
+<br>
+<br>
+
+<form asp-controller="Activity" asp-action="create" method="post">
+  <div class="form-group">
+    <label for="ActivityName">Title:</label>
+    <input type="text" class="form-control" name="ActivityName">
+  </div>
+  <div class="form-group">
+    <label for="ActitityTime">Time:</label>
+    <input type="time" class="form-control" name="ActivityTime">
+  </div>
+  <div class="form-group">
+    <label for="ActivityDate">Date:</label>
+    <input type="date" class="form-control" name="ActivityDate">
+  </div>
+  <div class="form-group">
+    <label for="ActivityLength">Duration:</label>
+    <input type="number" class="form-control" name="ActivityLength">
+  </div>
+  <div class="form-group">
+    <label for="ActivityDescription">Description:</label>
+    <textarea class="form-control" rows="5" name="ActivityDescription"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Create Activity</button>
+</form>
+

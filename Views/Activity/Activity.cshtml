@@ -1,0 +1,27 @@
+
+<nav>
+  <h1>Dojo Activity Center</h1>
+  <h3><a asp-controller="Activity" asp-action="Home">Back</a>
+  <a asp-controller="LogReg" asp-action="Logoff">Log Out</a></h3>
+</nav>
+
+<br>
+
+<h1>@ViewBag.ThisActivity.ActivityName</h1>
+
+<br>
+
+<h3>Description: @ViewBag.ThisActivity.ActivityDescription</h3>
+
+<br>
+
+<h3>Participants:</h3>
+
+<br>
+
+<ul>
+  @foreach (var participant in @ViewBag.ThisActivity.Participants)
+  {
+    <li>@participant.User.FirstName @participant.User.LastName</li>
+  }
+</ul>

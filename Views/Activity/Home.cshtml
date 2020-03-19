@@ -1,0 +1,52 @@
+<h1>Dojo Activity Center</h1>
+
+<br>
+
+<h4><p><a asp-action="Logoff" asp-controller="LogReg">Log Out</a></p></h4>
+
+<br>
+
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Activity</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Duration</th>
+        <th>Event Coordinator</th>
+        <th>Number of Participants</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    @foreach (var activity in @ViewBag.Activities)
+    {
+      <tr class="warning">
+        <td><a asp-action="Activity" asp-controller="Activity" asp-route-ActivityId="@activity["ActivityId"]">@activity["ActivityName"]</a></td>
+        <td>@activity["ActivityDate"].ToString("M/d")</td>
+        <td>@activity["ActivityTime"].ToString("hh:mm tt")</td>
+        <td>@activity["ActivityLength"]</td>
+        <td>@activity["Coordinator"].FirstName @activity["Coordinator"].LastName</td>
+        <td>@activity["JOINs"]</td>
+        @if (activity["Created"])
+        {
+          <td><a asp-action="Delete" asp-controller="Activity" asp-route-ActivityId="@activity["ActivityId"]">Delete</a></td>
+        }
+        else if (activity["JOINed"])
+        {
+          <td><a asp-action="Leave" asp-controller="Activity" asp-route-ActivityId="@activity["ActivityId"]">Leave</a></td>
+        }
+        else
+        {
+          <td><a asp-action="Join" asp-controller="Activity" asp-route-ActivityId="@activity["ActivityId"]">Join</a></td>
+        }
+      </tr>
+    }
+    </tbody>
+  </table>
+</div>
+
+
+
+<p><a asp-action="ActivityForm" asp-controller="Activity"><button type="button" class="btn btn-info">Add New Activity!</button></a></p>
